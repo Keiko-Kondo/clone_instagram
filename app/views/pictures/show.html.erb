@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<div class="show">
+  <p>画像: <%= @picture.image %></p>
+  <p>comment: <%= @picture.comment %></p>
+</div>
+<br>
+<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<%= link_to 'Back', pictures_path %>
