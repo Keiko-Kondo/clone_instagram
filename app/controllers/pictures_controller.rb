@@ -10,6 +10,7 @@ class PicturesController < ApplicationController
   # GET /pictures/1
   # GET /pictures/1.json
   def show
+    @favorite = current_user.favorites.find_by(picture_id: @picture.id)
   end
 
   # GET /pictures/new
@@ -24,7 +25,7 @@ class PicturesController < ApplicationController
   # POST /pictures
   # POST /pictures.json
   def create
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.build(picture_params)
       if params[:back]
         render :new
       else
@@ -37,7 +38,7 @@ class PicturesController < ApplicationController
   end
 
   def confirm
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.build(picture_params)
     render :new if @picture.invalid?
   end
   # PATCH/PUT /pictures/1
