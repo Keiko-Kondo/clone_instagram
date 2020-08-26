@@ -30,6 +30,7 @@ class PicturesController < ApplicationController
         render :new
       else
         if @picture.save
+          PictureMailer.picture_mail(@picture).deliver
           redirect_to @picture, notice: 'Picture was successfully created.'
         else
           render :new
