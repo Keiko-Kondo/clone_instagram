@@ -1,9 +1,11 @@
 <h3>以下の内容で投稿する</h3>
-<%= form_with(model: @picture, local: true) do |form| %>
-  <%= form.hidden_field :image %>
+<%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+  <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+  <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :comment %>
-  <p>image: <%= @picture.image %></p>
-  <p>comment: <%= @picture.comment %></p>
   <%= form.submit "投稿する" %>
-  <%= form.submit "戻る", name: 'back' %>
+<% end %>
+<%= form_with(model:@picture, url:new_picture_path, local:true, method:"get") do |form| %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.submit "戻る", name: "back" %>
 <% end %>

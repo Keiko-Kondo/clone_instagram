@@ -11,6 +11,9 @@
   <% end %>
 
   <div class="actions">
+    <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
     <%= form.label :comment %>
     <%= form.text_field :comment %>
     <%= form.submit %>
