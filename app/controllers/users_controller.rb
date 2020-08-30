@@ -39,9 +39,6 @@ class UsersController < ApplicationController
 
   # DELETE /pictures/1
   # DELETE /pictures/1.json
-
-
-
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :profile_image, :profile_image_cache)

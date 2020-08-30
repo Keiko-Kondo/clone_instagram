@@ -1,15 +1,11 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Pictures</h1>
-<%= link_to 'お気に入り一覧', favorites_path %>
-
 <table>
   <thead>
     <tr>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @pictures.each do |picture| %>
       <tr>
@@ -27,7 +23,5 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-
 <%= link_to 'New Picture', new_picture_path %>
