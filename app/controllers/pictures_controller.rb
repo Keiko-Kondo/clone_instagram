@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
-
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   # GET /pictures
   # GET /pictures.json
   def index
@@ -72,5 +72,12 @@ class PicturesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def picture_params
       params.require(:picture).permit(:image, :image_cache, :comment)
+    end
+
+    def ensure_correct_user
+      @picture = Picture.find(params[:id])
+      if current_user.id != @picture.user_id
+        redirect_to pictures_url
+      end
     end
   end

@@ -1,0 +1,10 @@
+<p>あなたのお気に入り一覧</p>
+<% @favorites.each do |favorite| %>
+  <tr>
+    <td><%= image_tag(favorite.image.url) %></td>
+    <td><%= favorite.comment %></td>
+  </tr>
+  <br>
+<% end %>
+<br>
+<%= link_to 'みんなの投稿一覧', pictures_path %>

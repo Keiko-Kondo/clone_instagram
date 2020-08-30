@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def new
     if params[:back]
@@ -48,5 +49,12 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    if current_user.id != @user.id
+      redirect_to pictures_url
+    end
   end
 end
