@@ -18,6 +18,7 @@
         <li class="nav-item"><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
         <li class="nav-item"><%= link_to 'お気に入り一覧', favorites_path %></li>
         <li class="nav-item"><%= link_to 'みんなの投稿一覧', pictures_path %></li>
+        <li class="nav-item"><%= link_to '投稿する', new_picture_path %></li>
         <button type="button" class="btn btn-info user" >ユーザー名：<%= current_user.name %></button>
       </ul>
     <% else %>

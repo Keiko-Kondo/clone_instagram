@@ -2,6 +2,7 @@
 <div class="show">
   <p>画像: <%= image_tag(@picture.image.url) %></p>
   <p>comment: <%= @picture.comment %></p>
+  <%= link_to '戻る', pictures_url %>
 </div>
 <% unless @picture.user_id == current_user.id %>
   <% if @favorite.present? %>
