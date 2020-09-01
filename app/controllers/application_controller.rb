@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path
     end
   end
+
+  def login_check
+    if current_user.nil?
+      redirect_to root_url, danger: "ログインしてください"
+    end
+  end
+
 end
